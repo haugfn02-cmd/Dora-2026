@@ -1,8 +1,8 @@
 {
-  "botName": "Keji Cloud",
+  "botName": "dora 2026",
   "prefix": ".",
   "botpicture": "https://i.ibb.co/Xxmdjjfm/Flux-Dev-cinematic-keyframe13-anime-keyframe12-Animestyle-port-2.jpg",
-  "ownerName": "Hridoy",
+  "ownerName": "yogi",
   "ownerUID": "61575746590997",
   "adminUIDs": [
     "61575746590997",
@@ -10,7 +10,7 @@
     "your_uid_here",
     "12"
   ],
-  "language": "bn",
+  "language": "ar",
   "database": {
     "type": "json",
     "autoSave": true,
