@@ -13,8 +13,8 @@ const handleMessage = async (event, api, commands) => {
       api.getThreadInfo(event.threadID)
     ]);
 
-    const userName = userInfo[event.senderID]?.name || 'Unknown User';
-    const threadName = threadInfo?.name || 'Unknown Thread';
+    const userName = userInfo[event.senderID]?.name || 'مستخدم غير معروف';
+    const threadName = threadInfo?.name || 'محادثة غير معروفة';
 
   
     Users.create(event.senderID, userName);
@@ -49,11 +49,11 @@ const handleMessage = async (event, api, commands) => {
     if (!body) return;
 
     const isGroup = event.isGroup;
-    const messageType = event.attachments && event.attachments.length > 0 ? 'media' : 'text';
-    const mediaUrl = event.attachments && event.attachments.length > 0 ? event.attachments[0].url || 'N/A' : 'N/A';
-    const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    const messageType = event.attachments && event.attachments.length > 0 ? 'وسائط' : 'نص';
+    const mediaUrl = event.attachments && event.attachments.length > 0 ? event.attachments[0].url || 'غير متوفر' : 'غير متوفر';
+    const time = new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit', hour12: true });
 
-    const logMessage = `${time} - ${userName} (${isGroup ? 'Group' : 'Private'}) - Type: ${messageType} - Message: ${body} - Media URL: ${mediaUrl}`;
+    const logMessage = `${time} - ${userName} (${isGroup ? 'مجموعة' : 'خاص'}) - النوع: ${messageType} - الرسالة: ${body} - رابط الوسائط: ${mediaUrl}`;
     log('info', logMessage);
 
   
@@ -91,7 +91,7 @@ const handleMessage = async (event, api, commands) => {
       await handleCommand({ message: body, args, event, api, Users, Threads, commands, config: global.client.config });
     }
   } catch (error) {
-    log('error', `Message handling error: ${error.message}`);
+    log('error', `خطأ في معالجة الرسالة: ${error.message}`);
   }
 };
 
