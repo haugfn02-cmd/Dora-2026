@@ -1,0 +1,100 @@
+{
+  "system": {
+    "botName": "دورا 2026",
+    "ownerName": "يوغي",
+    "prefix": ".",
+    "language": "ar"
+  },
+  
+  "logger": {
+    "levels": {
+      "info": "معلومات",
+      "error": "خطأ",
+      "warn": "تحذير",
+      "success": "نجاح"
+    },
+    "messages": {
+      "commandLoaded": "تم تحميل الأمر: {name}",
+      "eventLoaded": "تم تحميل الحدث: {name}",
+      "commandError": "خطأ في تحميل الأمر {file}: {error}",
+      "eventError": "خطأ في تحميل الحدث {file}: {error}",
+      "botStarted": "✅ تم تشغيل البوت بنجاح",
+      "botStopped": "⛔ تم إيقاف البوت",
+      "loginSuccess": "✅ تم تسجيل الدخول بنجاح",
+      "loginError": "❌ فشل تسجيل الدخول: {error}"
+    }
+  },
+
+  "permissions": {
+    "levels": {
+      "owner": "المالك",
+      "admin": "مشرف البوت",
+      "groupAdmin": "مشرف المجموعة",
+      "user": "مستخدم عادي"
+    },
+    "errors": {
+      "noPermission": "⛔ ليس لديك صلاحية لاستخدام هذا الأمر.",
+      "adminOnly": "⚠️ هذا الأمر متاح للمشرفين فقط.",
+      "groupAdminOnly": "⚠️ هذا الأمر متاح لمشرفي المجموعة فقط.",
+      "ownerOnly": "⚠️ هذا الأمر متاح للمالك فقط.",
+      "adminOnlyMode": "⚠️ البوت حالياً في وضع المشرفين فقط. يمكن للمشرفين فقط استخدام الأوامر."
+    }
+  },
+
+  "cooldown": {
+    "wait": "⏱️ يرجى الانتظار {time} ثانية قبل استخدام هذا الأمر مرة أخرى.",
+    "ready": "✅ يمكنك الآن استخدام الأمر."
+  },
+
+  "commands": {
+    "notFound": "❌ الأمر غير موجود.",
+    "error": "❌ حدث خطأ أثناء تنفيذ الأمر.",
+    "success": "✅ تم تنفيذ الأمر بنجاح.",
+    "processing": "⏳ جاري المعالجة...",
+    "invalidArgs": "⚠️ الوسائط غير صحيحة. الاستخدام: {usage}"
+  },
+
+  "errors": {
+    "general": "❌ حدث خطأ: {error}",
+    "commandNotFound": "❌ الأمر غير موجود. استخدم {prefix}مساعدة لعرض الأوامر المتاحة.",
+    "missingArgs": "⚠️ وسائط ناقصة. الاستخدام: {usage}",
+    "invalidArgs": "⚠️ وسائط غير صحيحة. الاستخدام: {usage}",
+    "apiError": "❌ خطأ في الاتصال بالخادم: {error}",
+    "databaseError": "❌ خطأ في قاعدة البيانات: {error}",
+    "networkError": "❌ خطأ في الشبكة: {error}",
+    "timeout": "⏱️ انتهت مهلة الطلب",
+    "unknown": "❌ حدث خطأ غير معروف"
+  },
+
+  "success": {
+    "done": "✅ تم بنجاح",
+    "saved": "✅ تم الحفظ بنجاح",
+    "deleted": "✅ تم الحذف بنجاح",
+    "updated": "✅ تم التحديث بنجاح",
+    "sent": "✅ تم الإرسال بنجاح"
+  },
+
+  "messages": {
+    "userBanned": "⛔ أنت محظور من استخدام البوت.",
+    "groupBanned": "⛔ هذه المجموعة محظورة من استخدام البوت.",
+    "maintenance": "🔧 البوت في وضع الصيانة حالياً.",
+    "processing": "⏳ جاري المعالجة، يرجى الانتظار...",
+    "loading": "⏳ جاري التحميل...",
+    "pleaseWait": "⏳ يرجى الانتظار...",
+    "unknownUser": "مستخدم غير معروف",
+    "unknownThread": "محادثة غير معروفة",
+    "notAvailable": "غير متوفر"
+  },
+
+  "time": {
+    "seconds": "ثانية",
+    "minutes": "دقيقة",
+    "hours": "ساعة",
+    "days": "يوم",
+    "weeks": "أسبوع",
+    "months": "شهر",
+    "years": "سنة",
+    "ago": "منذ",
+    "now": "الآن"
+  }
+}
