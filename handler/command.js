@@ -3,6 +3,7 @@ const path = require('path');
 const { hasPermission } = require('../func/permissions');
 const { checkCooldown } = require('../func/cooldown');
 const { log } = require('../logger/logger');
+const { getLang } = require('../func/getLang');
 const config = require('../config/config.json');
 
 const loadCommands = () => {
@@ -13,9 +14,9 @@ const loadCommands = () => {
     try {
       const command = require(path.join(commandPath, file));
       commands.set(command.config.name, command);
-      log('info', `Loaded command: ${command.config.name}`);
+      log('info', getLang('logger.messages.commandLoaded', { name: command.config.name }));
     } catch (error) {
-      log('error', `Error loading command ${file}: ${error.message}`);
+      log('error', getLang('logger.messages.commandError', { file: file, error: error.message }));
     }
   }
   return commands;
@@ -31,27 +32,30 @@ const handleCommand = async ({ message, args, event, api, Users, Threads, comman
 
     const userData = Users.get(event.senderID);
     if (userData && userData.isBanned) {
-      return; 
+      return api.sendMessage(getLang('messages.userBanned'), event.threadID);
     }
 
     
     if (global.client.config.adminOnlyMode && !hasPermission(event.senderID, { adminOnly: true })) {
-      return api.sendMessage('Bot is currently in admin-only mode. Only bot administrators can use commands.', event.threadID);
+      return api.sendMessage(getLang('permissions.errors.adminOnlyMode'), event.threadID);
     }
 
     if (!hasPermission(event.senderID, command.config, await api.getThreadInfo(event.threadID))) {
-      return api.sendMessage('You do not have permission to use this command.', event.threadID);
+      return api.sendMessage(getLang('permissions.errors.noPermission'), event.threadID);
     }
 
     if (global.client.config.features.cooldown && !checkCooldown(event.senderID, command.config.name, command.config.countDown)) {
-      return api.sendMessage(`Please wait ${command.config.countDown} seconds before using this command again.`, event.threadID);
+      return api.sendMessage(
+        getLang('cooldown.wait', { time: command.config.countDown }), 
+        event.threadID
+      );
     }
 
     await command.onStart({ message, args: args.slice(1), event, api, Users, Threads, config: global.client.config });
-    log('info', `Command executed: ${command.config.name} by user ${event.senderID}`);
+    log('info', `تم تنفيذ الأمر: ${command.config.name} بواسطة المستخدم ${event.senderID}`);
   } catch (error) {
-    log('error', `Command error: ${error.message}`);
-    api.sendMessage('An error occurred while executing the command.', event.threadID);
+    log('error', getLang('errors.general', { error: error.message }));
+    api.sendMessage(getLang('commands.error'), event.threadID);
   }
 };
 
