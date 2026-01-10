@@ -12,12 +12,12 @@ for (const file of files) {
         const eventModule = require(path.join(eventPath, file));
         if (eventModule.config && eventModule.config.name && eventModule.config.eventType) {
             events.set(eventModule.config.name, eventModule);
-            log('info', `Loaded event: ${eventModule.config.name}`);
+            log('info', `تم تحميل الحدث: ${eventModule.config.name}`);
         } else {
-            log('error', `Failed to load event from ${file}: missing or invalid config.`);
+            log('error', `فشل تحميل الحدث من ${file}: إعدادات مفقودة أو غير صالحة.`);
         }
     } catch (error) {
-        log('error', `Error loading event ${file}: ${error.message}`);
+        log('error', `خطأ في تحميل الحدث ${file}: ${error.message}`);
     }
 }
 
@@ -40,11 +40,11 @@ module.exports = async (event, api) => {
                 
                     await eventModule.onStart({ event, api });
                 } catch (err) {
-                    log('error', `Error executing event ${eventName}: ${err.message}`);
+                    log('error', `خطأ في تنفيذ الحدث ${eventName}: ${err.message}`);
                 }
             }
         }
     } catch (error) {
-        log('error', `An unexpected error occurred in the event handler: ${error.message}`);
+        log('error', `حدث خطأ غير متوقع في معالج الأحداث: ${error.message}`);
     }
 };
